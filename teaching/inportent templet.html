@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teaching Course Web Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            width: 25%;
+            background-color: #2b2b2b;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .sidebar ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Middle Content */
+        .main-content {
+            width: 65%;
+            padding: 20px;
+            background-color: #ffffff;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .main-content h1 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .main-content h2 {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        .main-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .navigation button {
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .navigation button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Right Sidebar */
+        .right-sidebar {
+            width: 20%;
+            background-color: #f0f0f0; /* Light hash color for differentiation */
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+        <h2>Chapters</h2>
+        <ul>
+            <li><a href="#chapter1" onclick="showChapter('chapter1')">Chapter 1: Introduction</a></li>
+            <li><a href="#chapter2" onclick="showChapter('chapter2')">Chapter 2: HTML Basics</a></li>
+            <li><a href="#chapter3" onclick="showChapter('chapter3')">Chapter 3: CSS Essentials</a></li>
+            <li><a href="#chapter4" onclick="showChapter('chapter4')">Chapter 4: JavaScript Fundamentals</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <div id="chapter1" class="chapter">
+            <h1>Chapter 1: Introduction</h1>
+            <h2>What is Web Development?</h2>
+            <p>Web development refers to creating, building, and maintaining websites. It includes aspects like web design, programming, and database management.</p>
+            <h2>Why Learn Web Development?</h2>
+            <p>Learning web development allows you to create websites, understand user interfaces, and build online solutions in a tech-driven world.</p>
+            <div class="navigation">
+                <button disabled>Previous</button>
+                <button onclick="showChapter('chapter2')">Next</button>
+            </div>
+        </div>
+
+        <div id="chapter2" class="chapter" style="display:none;">
+            <h1>Chapter 2: HTML Basics</h1>
+            <h2>What is HTML?</h2>
+            <p>HTML (HyperText Markup Language) is the language used to structure a web page and its content.</p>
+            <h2>HTML Elements</h2>
+            <p>HTML consists of elements defined by tags like <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, and <code>&lt;div&gt;</code>.</p>
+            <div class="navigation">
+                <button onclick="showChapter('chapter1')">Previous</button>
+                <button onclick="showChapter('chapter3')">Next</button>
+            </div>
+        </div>
+
+        <div id="chapter3" class="chapter" style="display:none;">
+            <h1>Chapter 3: CSS Essentials</h1>
+            <h2>What is CSS?</h2>
+            <p>CSS (Cascading Style Sheets) is a language that describes the style of an HTML document.</p>
+            <h2>Selectors and Properties</h2>
+            <p>CSS uses selectors (like <code>div</code>, <code>#id</code>, and <code>.class</code>) to apply styles, such as color, layout, and fonts.</p>
+            <div class="navigation">
+                <button onclick="showChapter('chapter2')">Previous</button>
+                <button onclick="showChapter('chapter4')">Next</button>
+            </div>
+        </div>
+
+        <div id="chapter4" class="chapter" style="display:none;">
+            <h1>Chapter 4: JavaScript Fundamentals</h1>
+            <h2>What is JavaScript?</h2>
+            <p>JavaScript is a versatile scripting language that enables dynamic and interactive web content.</p>
+            <h2>Basic Syntax</h2>
+            <p>JavaScript includes variables, functions, events, and DOM manipulation for creating interactive features.</p>
+            <div class="navigation">
+                <button onclick="showChapter('chapter3')">Previous</button>
+                <button disabled>Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar"></div>
+
+    <script>
+        function showChapter(chapterId) {
+            // Hide all chapters
+            const chapters = document.querySelectorAll('.chapter');
+            chapters.forEach(chapter => chapter.style.display = 'none');
+
+            // Show the selected chapter
+            const chapter = document.getElementById(chapterId);
+            chapter.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
